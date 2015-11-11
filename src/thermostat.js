@@ -9,6 +9,14 @@ Thermostat.prototype = {
     this.powerSaving = !(this.powerSaving);
   },
 
+  colour: function(){
+    if (this.temperature < 18) {
+      return 'low-usage';}
+    if (this.temperature >= 18 && this.temperature <= 25) {
+      return 'medium-usage';}
+    return 'high-usage'; // not using else
+  },
+
   up: function(increment){
     if(this.powerSaving === false && (this.temperature + increment) > 32) {
         throw new Error("32 is the max when not saving power");}
